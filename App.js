@@ -27,12 +27,17 @@ var Grid = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-
-      return React.createElement(
-        "div",
-        { "max-width": 2024, "max-height": 2024 },
-        this.renderSquares(1024)
-      );
+      var size = 8;
+      var html = [];
+      for (var i = 0; i < size; i++) {
+        html[i] = React.createElement(
+          "div",
+          null,
+          this.renderSquares(size),
+          React.createElement("br", null)
+        );
+      }
+      return html;
     }
   }]);
 
@@ -58,13 +63,9 @@ var Square = function (_React$Component2) {
     value: function render() {
       var _this3 = this;
 
-      return React.createElement(
-        "button",
-        { className: "square", onClick: function onClick() {
-            return _this3.setState({ color: '#FF0000' });
-          }, style: { background: this.state.color } },
-        "@"
-      );
+      return React.createElement("button", { "class": "square", onClick: function onClick() {
+          return _this3.setState({ color: '#FF0000' });
+        }, style: { background: this.state.color } });
     }
   }]);
 

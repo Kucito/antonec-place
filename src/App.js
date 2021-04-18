@@ -1,19 +1,23 @@
 class Grid extends React.Component {
   renderSquares(size){
     var squares = [];
-    for( var i=0;i<size;i++){
+    for(var i = 0; i < size; i++){
       squares.push(<Square key={i}/>)
     }
     return squares;
   }
   render() {
-  
-    return (
-      <div max-width={2024} max-height={2024}>
-        {this.renderSquares(1024)}
-      </div>
-      
-    )
+    var size = 8;
+    var html = [];
+    for(var i = 0; i < size; i++){
+      html[i] = (
+        <div>
+          {this.renderSquares(size)}
+          <br></br>
+        </div>
+      );
+    }
+    return html;
   }
 }
 
@@ -26,8 +30,8 @@ class Square extends React.Component {
   }
   render() {
     return (
-      <button className="square"   onClick={() => this.setState({color: '#FF0000'})} style ={{background: this.state.color}}>
-        @
+      <button class="square" onClick={() => this.setState({color: '#FF0000'})} style ={{background: this.state.color}}>
+        
       </button>
     );
   }
