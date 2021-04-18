@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Grid extends React.Component {
+  renderSquares(size){
+    var squares = [];
+    for( var i=0;i<size;i++){
+      squares.push(<Square key={i}/>)
+    }
+    return squares;
+  }
+  render() {
+  
+    return (
+      <div max-width={2024} max-height={2024}>
+        {this.renderSquares(1024)}
+      </div>
+      
+    )
+  }
 }
 
-export default App;
+class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: "#00FF00"
+    };
+  }
+  render() {
+    return (
+      <button className="square"   onClick={() => this.setState({color: '#FF0000'})} style ={{background: this.state.color}}>
+        @
+      </button>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Grid />,
+  document.getElementById('root')
+);
